@@ -27,6 +27,10 @@ impl Memory {
         }
     }
 
+    /// Moves the memory pointer one step to the left.
+    ///
+    /// # Panics
+    /// Panics if the memory pointer is already at the leftmost index (0).
     pub fn move_left(&mut self) {
         if self.pointer == 0 {
             // 仕様に応じて panic かエラー返す
