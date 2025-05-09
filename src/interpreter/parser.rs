@@ -38,8 +38,12 @@ fn parse_block(
                 nodes.push(AstNode::Loop(body));
             }
             Command::LoopEnd => {
-                *pos += 1;
-                return Ok(nodes);
+                if is_top_level {
+                    return Err(MjbkError::UnexpectedLoopEnd);
+                } else {
+                    *pos += 1;
+                    return Ok(nodes);
+                }
             }
             cmd => {
                 nodes.push(AstNode::Cmd(cmd));
@@ -47,12 +51,11 @@ fn parse_block(
             }
         }
     }
-
     // 最上位でループが閉じられていなければエラー
-    if !is_top_level {
-        Err(MjbkError::UnclosedLoop)
-    } else {
+    if is_top_level {
         Ok(nodes)
+    } else {
+        Err(MjbkError::UnclosedLoop)
     }
 }
 
