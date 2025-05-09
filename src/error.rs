@@ -3,7 +3,7 @@ use std::io;
 use thiserror::Error;
 
 #[derive(Debug, Error)]
-pub enum OlError {
+pub enum MjbkError {
     #[error("Invalid character encountered: '{0}'")]
     InvalidChar(char),
 

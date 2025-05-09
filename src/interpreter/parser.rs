@@ -1,4 +1,4 @@
-use crate::error::OlError;
+use crate::error::MjbkError;
 
 use super::lexer::Command;
 
@@ -7,6 +7,6 @@ pub enum AstNode {
     Loop(Vec<AstNode>),
 }
 
-pub fn parse(_tokens: &[Command]) -> Result<Vec<AstNode>, OlError> {
+pub fn parse(_tokens: &[Command]) -> Result<Vec<AstNode>, MjbkError> {
     todo!()
 }
