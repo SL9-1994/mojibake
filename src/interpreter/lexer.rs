@@ -1,4 +1,4 @@
-use crate::error::MtError;
+use crate::error::OlError;
 
 pub enum Command {
     Inc,
@@ -11,6 +11,6 @@ pub enum Command {
     LoopEnd,
 }
 
-pub fn tokenize(_src: &str) -> Result<Vec<Command>, MtError> {
+pub fn tokenize(_src: &str) -> Result<Vec<Command>, OlError> {
     todo!()
 }

@@ -7,5 +7,5 @@ pub mod interpreter {
     pub mod run;
 }
 
-pub use error::MtError;
+pub use error::OlError;
 pub use interpreter::run::execute;
