@@ -18,4 +18,10 @@ pub enum MjbkError {
 
     #[error("Runtime error: {0}")]
     Runtime(String),
+
+    #[error("The loop is not closed correctly")]
+    UnclosedLoop,
+
+    #[error("Loop unexpectedly terminated.")]
+    UnexpectedLoopEnd,
 }
