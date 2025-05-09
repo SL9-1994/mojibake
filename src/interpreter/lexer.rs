@@ -51,3 +51,30 @@ pub fn tokenize(src: &str) -> Result<Vec<Command>, MjbkError> {
     Ok(tokens)
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_tokenize_valid() {
+        let src = "�焚隱繝ｫ縺死";
+        let tokens = tokenize(src).unwrap();
+        assert_eq!(
+            tokens,
+            vec![
+                Command::LoopStart,
+                Command::LoopEnd,
+                Command::Dec,
+                Command::Inc,
+                Command::MoveLeft,
+                Command::Input
+            ]
+        );
+    }
+
+    #[test]
+    fn test_tokenize_invalid() {
+        let src = "繝ｫs";
+        assert!(matches!(tokenize(src), Err(MjbkError::InvalidChar('s'))));
+    }
+}
