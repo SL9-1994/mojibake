@@ -19,8 +19,8 @@ static MAP_RULES: &[(&str, Command)] = &[
     ("繧ｪ", Command::MoveRight),
     ("縺", Command::MoveLeft),
     ("繝?", Command::Output),
-    ("死", Command::Input),
-    ("血", Command::LoopStart),
+    ("峨", Command::Input),
+    ("吶", Command::LoopStart),
     ("焚", Command::LoopEnd),
 ];
 
@@ -68,7 +68,7 @@ mod tests {
 
     #[test]
     fn test_tokenize_valid() {
-        let src = "血焚隱繝ｫ縺死";
+        let src = "吶焚隱繝ｫ縺峨";
         let tokens = tokenize(src).unwrap();
         assert_eq!(
             tokens,
