@@ -20,9 +20,20 @@ static MAP_RULES: &[(&str, Command)] = &[
     ("縺", Command::MoveLeft),
     ("繝?", Command::Output),
     ("死", Command::Input),
-    ("�", Command::LoopStart),
+    ("血", Command::LoopStart),
     ("焚", Command::LoopEnd),
 ];
+
+// static BF_RULES: &[(&str, Command)] = &[
+//     ("-", Command::Dec),
+//     ("+", Command::Inc),
+//     (">", Command::MoveRight),
+//     ("<", Command::MoveLeft),
+//     (".", Command::Output),
+//     (",", Command::Input),
+//     ("[", Command::LoopStart),
+//     ("]", Command::LoopEnd),
+// ];
 
 /// 日本語 DSL をトークンに変換（命令ごとに文字数可変）
 pub fn tokenize(src: &str) -> Result<Vec<Command>, MjbkError> {
@@ -57,7 +68,7 @@ mod tests {
 
     #[test]
     fn test_tokenize_valid() {
-        let src = "�焚隱繝ｫ縺死";
+        let src = "血焚隱繝ｫ縺死";
         let tokens = tokenize(src).unwrap();
         assert_eq!(
             tokens,
